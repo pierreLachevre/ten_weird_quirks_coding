@@ -101,6 +101,8 @@ Le résultat peut aussi étonner ici mais est tout à fait logique. Le code ASCI
 
 ## PHP
 
+### WeirdIncrement.php
+
 ```php
 <?php
 $x = null;
@@ -119,6 +121,87 @@ Note: Les opérateurs d'incrémentation/décrémentation n'affectent que les nom
 Les tableaux, objets, booléen et ressources ne sont pas affectés. 
 La décrémentation des valeurs NULL n'a également aucun effet, mais leur incrémentation donnera comme résultat 1. 
 ```
+
+### WeirdComparator.php
+
+```php
+<?php     
+    echo (int)(null > -1), "\n";
+    echo (int)(null < 1), "\n";
+    echo (int)(null == 0), "\n";
+?>
+```
+Ici la logique est un peu complexe à comprendre mais peu être retrouvée dans la documentation avec un peu de recherche. Tout d'abord il faut comprendre la façon dont PHP interprète null lors d'une comparaison. D'après la documentation PHP consièdre que si la première opérande d'une opération est null et que la seconde est une valeur quelconque (peu importe le type sauf string) alors on considerera la comparation comme une comparaison entre 2 booléens : http://docs.php.net/manual/fr/language.operators.comparison.php
+
+Ensuite il faut comprendre comment sont interprétés null, -1, 0 et 1 dans ces cas. D'après la documentation null et 0 sont considérés comme égaux à false et 1 et -1 sont considérés comme égaux à true.
+
+De fait:
+
+```
+null > -1 ==> false > true ==> false et int(false) ==> 0
+```
+
+```
+null < -1 ==> false < true ==> true et int(true) ==> 1
+```
+
+```
+null == 0 ==> false == false ==> true et int(true) ==> 1
+```
+
+### GreatCompare.php
+
+```php
+<?php
+echo "Rock the Goat" == true;
+echo "\n";
+echo "Rock the Goat" == 0;
+echo "\n";
+echo true == 0;
+echo "\n";
+?>
+```
+
+De la même façon que le cas précédent en lisant la documentation on comprend le résultat.
+Toute chaîne de caractère non vide est considéré comme un booléen lors d'une comparaison avec un booléen et comme un entier lors d'une comparaison avec un entier (si la chaîne ne peut être converti elle est alors égale à 0). De fait :
+
+```echo "Rock the Goat" == true; ==> true donc 1```
+
+```echo "Rock the Goat" == 0; ==> true donc 1```
+
+```echo true == 0; ==> false donc 0```
+
+Documentation: http://docs.php.net/manual/fr/language.operators.comparison.php
+https://www.php.net/manual/fr/language.types.boolean.php
+
+### WeirdLogic.php
+
+```php
+<?php
+$initial = 'R';
+$name = (($initial == 'D') ? 'Dalc'
+	: ($initial == 'R') ? 'Rock The Goat'
+	: ($initial == 'S') ? 'Soplador'
+	: ($initial == 'K') ? 'Kao'
+	: 'unknown');
+echo $name;
+echo "\n";
+?>
+```
+
+Ici on se retrouve avec un cas qui diffère de beaucoup de langages de programmation. En effet dans de nombreux langages le résultat serait "Rock The Goat" face à cette série d'opérateur ternaire.
+En PHP toutefois le résultat est "Kao". Encore une fois la raison est expliquée dans la documentation: https://www.php.net/manual/fr/language.operators.comparison.php
+
+On peut toutefois résumé la raison de la façon suivante:
+
+```php
+($initial == 'D') ? 'Dalc' ==> false
+==> ($initial == 'R') ? 'Rock The Goat' ==> true
+==> 'Rock The Goat' ? 'Soplador' ==> true
+==> 'Soplador' ? 'Kao' ==> true
+==> 'Kao' 
+```
+En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de gauche à droite.
 
 ## Python
 
