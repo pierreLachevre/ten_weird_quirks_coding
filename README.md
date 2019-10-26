@@ -205,6 +205,47 @@ En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de 
 
 ## Python
 
+### Indent.py
+
+```python
+if True: 
+print("without indent")
+
+if True:
+    print("with Indent")
+```
+Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimitant des blocs de codes comme les accolades par exemple.
+De fait python demande une extrème attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
+
+### WhatIsMyVariableValue.py
+
+```python
+a= True; b=1;
+print a == b
+print a+b
+print str(a) == str(b)
+```
+Les résultats successifs de cet appel sont :
+
+```
+True
+2
+False
+```
+En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on consière true comme égal à 1. De fait les 2 premières instructions sont équivalentes à ```1==1 ==> true``` et ```1+1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
+
+### DefaultVariable.py
+
+```python
+def append_ni(l=[]):
+  l.append('ni!');
+  return l;
+
+print(append_ni())
+print(append_ni(['nanan']))
+print(append_ni())
+```
+
 ## Ruby/ Ruby on Rails
 
 ### variables.rb
