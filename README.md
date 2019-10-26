@@ -207,6 +207,33 @@ En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de 
 
 ## Ruby/ Ruby on Rails
 
+### variables.rb
+
+```ruby
+a
+b
+a = b
+a = a 
+```
+
+Ici le résultat des différentes opérations peut paraitre étrange mais est tout à fait logique. Lorsque l'on essaye d'utiliser une variable non définie ruby nous en informe avec l'erreur
+
+```
+undefined local variable or method 'a' for main Object
+```
+
+De fait l'erreur présente sur a et b est normal. De même lorsque l'on fait ```a=b```, l'erreur est la même puisqu'on nous indique de b n'est pas définit. Toutefois pourquoi ne nous indique t-il pas que a n'est pas définit?
+
+En fait l'explication se trouve dans l'interpréteur ruby. Celui-ci initialise toute les variables local avec nil quand il voit que l'on essaye de les assigner.
+De fait dans ```a = b``` a est égal à nil mais b n'a pas de valeur. Donc on indique une erreur sur b. 
+
+Dans l'instruction ```a=a ==> nil```, on retrouve la même chose, l'intepréteur initialise a avec nil avant de faire l'assignation ```a=a``` ce qui pourrait se traduire par ```a=nil``` ce qui donne ```nil```
+
+
+### dates.rb
+
+Attention ce code ci n'est utilisable qu'avec Rails car il utilise des helpers de Rails.
+
 ## C#
 
 ## JavaScript
