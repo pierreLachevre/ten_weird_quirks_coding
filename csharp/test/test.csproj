@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <StartupObject>test.Comparison</StartupObject>
+    <StartupObject>test.CircleSquare</StartupObject>
   </PropertyGroup>
 
 </Project>

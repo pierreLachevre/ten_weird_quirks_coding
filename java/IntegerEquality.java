@@ -12,8 +12,8 @@ public class IntegerEquality{
     }
 
     private static void secondEquality(){
-        Integer c = 666;
-        Integer d = 666;
+        Integer c = 404;
+        Integer d = 404;
         System.out.println(c == d);
     }
 }

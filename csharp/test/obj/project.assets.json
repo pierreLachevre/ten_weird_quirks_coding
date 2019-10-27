@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/wallach/Bureau/codeur_en_seine/csharp/test/test.csproj",
+      "projectUniqueName": "/home/wallach/Bureau/codeur_en_seine/ten_weird_quirks_coding/csharp/test/test.csproj",
       "projectName": "test",
-      "projectPath": "/home/wallach/Bureau/codeur_en_seine/csharp/test/test.csproj",
+      "projectPath": "/home/wallach/Bureau/codeur_en_seine/ten_weird_quirks_coding/csharp/test/test.csproj",
       "packagesPath": "/home/wallach/.nuget/packages/",
-      "outputPath": "/home/wallach/Bureau/codeur_en_seine/csharp/test/obj/",
+      "outputPath": "/home/wallach/Bureau/codeur_en_seine/ten_weird_quirks_coding/csharp/test/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/wallach/.nuget/NuGet/NuGet.Config"

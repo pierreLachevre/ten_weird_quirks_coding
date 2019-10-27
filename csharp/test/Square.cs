@@ -9,7 +9,5 @@ namespace test
             X=x;
             Y=y;
         }
-
-
     }
 }
