@@ -427,18 +427,27 @@ Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrer
 
 ```javascript
 [] + []
+```
 
+```javascript
 [] + {}
+```
 
+```javascript
 {} + []
+```
 
+```javascript
 {} + {}
+```
 
+```javascript
 [1, 2, 3] + [4, 5, 6];
 [1, 2, 3] + [,4, 5, 6];
+```
 
+```javascript
 true + true
-
 ((true+true+true)*(true+false+true))*(Math.pow(true+true,(true+true))*(true+true)-true)
 ```
 
@@ -448,9 +457,14 @@ true + true
 Array(25)
 
 Array(25).join("nya")
+```
 
+```javascript
 Array(25).join("nya" + 1)
+```
 
+
+```javascript
 Array(25).join("nya" - 1)
 ```
 
@@ -458,10 +472,20 @@ Array(25).join("nya" - 1)
 
 ```javascript
 Math.max() < Math.min() 
+```
 
+```javascript
 "foo" + +"bar"; 
+```
 
-NaN === NaN;
+Le résultat peut encore une fois surprendre mais en fait l'opération précédente est interprétée comme ```'foo' + (+'bar')``` or ```(+'bar')``` est interprété comme NaN. Ainsi la concaténation suivante est faite ensuite ```'foo' + NaN```. D'où le résultat ```fooNan```
 
+```javascript
 typeof NaN
 ```
+
+```javascript
+NaN === NaN;
+```
+
+https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison
