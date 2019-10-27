@@ -205,7 +205,7 @@ En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de 
 
 ## Python
 
-### Indent.py
+### indent.py
 
 ```python
 if True: 
@@ -217,7 +217,7 @@ if True:
 Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimitant des blocs de codes comme les accolades par exemple.
 De fait python demande une extrème attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
 
-### WhatIsMyVariableValue.py
+### whatIsMyVariableValue.py
 
 ```python
 a= True; b=1;
@@ -234,7 +234,7 @@ False
 ```
 En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on consière true comme égal à 1. De fait les 2 premières instructions sont équivalentes à ```1==1 ==> true``` et ```1+1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
 
-### DefaultVariable.py
+### defaultVariable.py
 
 ```python
 def append_ni(l=[]):
@@ -245,6 +245,66 @@ print(append_ni())
 print(append_ni(['nanan']))
 print(append_ni())
 ```
+
+Ici le résultat peut surprendre étant donné que dans beaucoup de langages l'initialisation par défaut d'un argument de méthode existe. De fait on pense que lorsque la méthode est appelée sans paramètre, un paramètre est créé à la volée et initialisé avec un tableau vide. Cependant le paramètre est ici initialisé lors de la définition de la méthode. Du coup le paramètre n'est initialisé qu'une fois et chaque appel de la méthode sans paramètre modifiera le paramètre par défaut.
+
+### weirdArray.py
+
+```python
+myArray = ['ni'] * 16
+myArray[0] = 'We are the knights who say '
+myArray[15] = 'We need a shrubbery !'
+print myArray
+
+myArray = [['ni'] * 16] * 3
+print myArray
+
+myArray[0][0]= 'We are the knights who say '
+myArray[2][15]= 'We need a shrubbery !'
+print myArray
+```
+
+En python il est tout à fait possible de créer un tableau à n dimensions grâce à l'opérateur de multiplication. Cependant le résultat du code précédent peut surprendre un peu mais est logique puisqu'avec l'utilisation de cet opérateur on ne créé pas trois tableaux mais un seul tableau que l'on référence trois fois.
+De fait la modification d'une valeur du tableau entrainera la modification pour les 3 tableaux.
+
+### compare.py
+
+```python
+print "" is ""
+print 0 is 0
+print [] is []
+print {} is {}
+```
+
+L'opérateur ```is``` en python permet de vérifier si les deux objet comparés sont le même objet. Les 4 résultats précédents sont de fait logique.
+
+```python
+a= 256
+b= 256
+print a is b
+
+a= 257
+b= 257
+print a is b
+```
+
+Toutefois quand on regarde les deux résultats précédents ceux-ci peuvent surprendre car on pourrait penser qu'il s'agit à chaque fois du même objet. Cependant en python si on créé un entier entre les valeurs -5 et 256 alors on référencera toujours le même objet.
+
+
+https://docs.python.org/2/c-api/int.html
+
+```
+The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you actually just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behaviour of Python in this case is undefined. :-)
+```
+
+Toutefois si ```a != b``` lorsque a et b sont égaux à 257 alors comment expliquer le code suivant?
+
+```python
+a= 257; b= 257
+print a is b
+```
+
+En fait quand la déclaration se fait sur la même ligne alors les variables référencent la même valeur.
 
 ## Ruby/ Ruby on Rails
 
@@ -276,6 +336,92 @@ Dans l'instruction ```a=a ==> nil```, on retrouve la même chose, l'intepréteur
 Attention ce code ci n'est utilisable qu'avec Rails car il utilise des helpers de Rails.
 
 ## C#
+
+### CircleSquare.cs
+
+```csharp
+static void Main(string[] args)
+{
+    Square square1 = new Square(20, 30);
+    Square square2 = square1;
+    square2.X = 50;
+    Console.WriteLine(square1.X);     
+    Console.WriteLine(square2.X);     
+}
+
+```csharp
+static void Main(string[] args)
+{
+    Circle circle1 = new Circle(Color.Black);
+    Circle circle2 = circle1;
+    circle2.color = Color.Blue;
+    Console.WriteLine(circle1.color);     
+    Console.WriteLine(circle2.color);     
+}
+```
+
+Ici le résultat peut surprendre car on pense travailler sur les mêmes objets dans les deux cas avec le système de référence. Or Square et Circle sont déclarés de la façon suivante:
+
+```csharp
+public class Circle
+{
+	public Color color;
+	public Circle(Color c){
+	    color=c;
+	}
+}
+```
+
+```csharp
+public struct Square
+{
+	public int X;
+	public int Y;
+
+	public Square(int x, int y){
+	    X=x;
+	    Y=y;
+	}
+}
+```
+
+En C# les structs sont des versions allégés des classes. Le struct est un type valeur et lorsque le struct est associé à une nouvelle variable alors le struct est copié dans la nouvelle variable.
+
+https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/classes-and-structs/
+
+### Comparison.cs
+
+```csharp
+static void Main(string[] args)
+{            
+    string x = new string(new char[0]);
+    string y = new string(new char[0]);
+    Console.WriteLine(object.ReferenceEquals(x, y));
+}
+```
+
+Ici on pourrait croire que l'on créé deux objets strings. Il s'agit cependant de deux variables créées à la compilation. De fait étant donné qu'elles ont la même valeur, les deux variables référencent le même objet et ont donc une référence égale.
+
+### Inheritance.cs
+
+```csharp
+public class Base
+{
+}
+
+public interface Base2{
+
+}
+
+public class Derived : Base, Base2
+{
+
+}
+```
+
+Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrerie, mais en C# l'héritage et l'implémentation utilise le même caractère ```:```. De fait il n'est pas possible de distinguer dans une classe les implémentations de l'héritage (au singulier car l'héritage multiple n'existe pas en C#), on peut seulement supposé que "peut-être" Base est une classe car l'héritage est forcément écrit avant toute implémentation.
+
+
 
 ## JavaScript
 
