@@ -425,31 +425,61 @@ Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrer
 
 ### addition.js
 
+Lors d'une addition les deux opérandes sont converties en primitives avant de réaliser l'opération.
+Convertir un objet en primitives retourne la valeur par défaut (pour un objet il s'agit de la méthode ```toString()``` qui est appelée).
+
 ```javascript
 [] + []
 ```
+
+Pour une tableau la méthode ```toString()``` correspond à l'appel à la méthode ```join()```. Ainsi l'appel à la méthode ```join()``` pour un tableau vide retourne une chaîne de caractère vide, d'où le résultat obtenu.
 
 ```javascript
 [] + {}
 ```
 
+Ici la méthode```toString()``` sur un objet non null et défini retourne ```[object Object]```
+
 ```javascript
 {} + []
 ```
 
+Ici la première opérande ```{}``` est considérée comme un bloc vide. La valeur retournée par un bloc vide est vide donc le résultat est équivalent à ```+[]```. L'opérande ```+``` convertit l'objet en primitive. De fait ```+[]``` correspond à ```ToNumber(ToPrimitive([]))```. Or la transformation primitive d'un tableau vide est une chaîne de caractères vide, et la transformation d'une chaîne vide en nombre retourne ```0```.
+
 ```javascript
 {} + {}
 ```
+
+On reprend ici le même raisonnement que précemment, sauf que dans ce cas on se retrouve avec ```+[]``` qui équivaut à ```ToNumber(ToPrimitive({}))```. La primitive d'un objet correspond à ```[object Object]``` ce qui équivaut à faire ```ToNumber([object Object])``` ce qui retourne ```NaN```.
 
 ```javascript
 [1, 2, 3] + [4, 5, 6];
 [1, 2, 3] + [,4, 5, 6];
 ```
 
+Si on reprend l'explication précédente sur le passage en primitive d'un tableau, les résultats ici sont logiques (pour rappel, la transformation en primitive d'un objet consiste à appeler la méthode ```toString()``` de celui-ci, ce qui pour un tableau équivaut à appeler la méthode ```join()``` sur les arguments du tableau).
+
+On se retrouve ainsi avec:
+
+```javascript
+"1, 2, 3" + "4, 5, 6";
+"1, 2, 3" + ",4, 5, 6";
+```
+
+ce qui donne:
+
+```javascript
+"1, 2, 34, 5, 6";
+"1, 2, 3,4, 5, 6";
+```
+
+
 ```javascript
 true + true
 ((true+true+true)*(true+false+true))*(Math.pow(true+true,(true+true))*(true+true)-true)
 ```
+
+En javascript ```true``` est égale à ```1``` et ```false``` à ```0``` de fait il est tout à fait possible de faire des opérations arithmétiques avec des booléens.
 
 ### array.js
 
@@ -457,22 +487,27 @@ true + true
 Array(25)
 
 Array(25).join("nya")
-```
 
-```javascript
 Array(25).join("nya" + 1)
 ```
-
+En Javascript lorsque l'on utilise l'opérateur + avec un chaîne et un entier on réalise un concaténation.
 
 ```javascript
 Array(25).join("nya" - 1)
 ```
+
+Cependant lorsque l'on utilise l'opérateur -, on essaye de réaliser une opération arithmétique, donc on esaye de transformer la chaîne de caractère en entier dans un premier temps ce qui nous donne NaN. 
 
 ### number.js
 
 ```javascript
 Math.max() < Math.min() 
 ```
+
+```Math.max``` renvoit le plus grand nombre comparé avec -Infini. Et ```Math.min``` renvoit le plus petit nombre comparé à +Infini.
+
+Ainsi lorsque l'on fait ```Math.max(5)``` équivaut à faire ```Math.max(5, -Infini) ==> 5```
+Et lorsque l'on fait ```Math.min(2)``` équivaut à faire ```Math.min(2, +Infini) ==> 2```
 
 ```javascript
 "foo" + +"bar"; 
@@ -484,8 +519,13 @@ Le résultat peut encore une fois surprendre mais en fait l'opération précéde
 typeof NaN
 ```
 
+Il est important de préciser dans un premier temps que NaN n'est pas un mot clé comme true, false etc, il s'agit en fait d'une propriété de l'objet global. En fait lorsque l'on affiche NaN on référence ```Number.NaN```. 
+NaN est de type Number comme définit dans la spécification EcmaScript: http://www.ecma-international.org/ecma-262/5.1/#sec-8.5
+
 ```javascript
 NaN === NaN;
 ```
+
+Le résultat ici est false tout simplement comme définit dans la spécification. Dans une comparaison === entre deux valeurs (exemple x === y), on commence par comparer leur type. Si les types sont équivalents et que x est un nombre alors si x ou y est NaN alors le résultat sera false.
 
 https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison
