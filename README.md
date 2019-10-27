@@ -348,7 +348,7 @@ static void Main(string[] args)
     Console.WriteLine(square1.X);     
     Console.WriteLine(square2.X);     
 }
-
+```
 ```csharp
 static void Main(string[] args)
 {
