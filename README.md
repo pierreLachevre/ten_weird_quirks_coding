@@ -421,7 +421,47 @@ public class Derived : Base, Base2
 
 Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrerie, mais en C# l'héritage et l'implémentation utilise le même caractère ```:```. De fait il n'est pas possible de distinguer dans une classe les implémentations de l'héritage (au singulier car l'héritage multiple n'existe pas en C#), on peut seulement supposé que "peut-être" Base est une classe car l'héritage est forcément écrit avant toute implémentation.
 
-
-
 ## JavaScript
 
+### addition.js
+
+```javascript
+[] + []
+
+[] + {}
+
+{} + []
+
+{} + {}
+
+[1, 2, 3] + [4, 5, 6];
+[1, 2, 3] + [,4, 5, 6];
+
+true + true
+
+((true+true+true)*(true+false+true))*(Math.pow(true+true,(true+true))*(true+true)-true)
+```
+
+### array.js
+
+```javascript
+Array(25)
+
+Array(25).join("nya")
+
+Array(25).join("nya" + 1)
+
+Array(25).join("nya" - 1)
+```
+
+### number.js
+
+```javascript
+Math.max() < Math.min() 
+
+"foo" + +"bar"; 
+
+NaN === NaN;
+
+typeof NaN
+```
