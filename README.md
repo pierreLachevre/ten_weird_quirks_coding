@@ -15,10 +15,26 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 	- [IntegerEquality](#integerequality)
 	- [Arithmetic](#arithmetic)
 * [PHP](#php)
+	- [WeirdIncrement](#weirdincrement)
+	- [WeirdComparator](#weirdcomparator)
+	- [GreatCompare](#greatcompare)
+	- [WeirdLogic](#weirdlogic)
 * [Python](#python)
+	- [indent](#indent)
+	- [whatIsMyVariableValue](#whatismyvariablevalue)
+	- [weirdArray](#weirdarray)
+	- [compare](#compare)
 * [Ruby/Ruby on Rails](#ruby-ruby-on-rails)
+	- [variables](#variables)
+	- [dates](#dates)
 * [C#](#csharp)
+	- [CircleSquare](#circlesquare)
+	- [Comparison](#comparison)
+	- [Inheritance](#inheritance)
 * [Javascript](#javascript)
+	- [addition](#addition)
+	- [array](#array)
+	- [number](#number)
 * [Liens utiles](#liens-utiles)
 
 
@@ -118,7 +134,7 @@ Le résultat peut aussi étonner ici mais est tout à fait logique. Le code ASCI
 
 ## PHP
 
-### WeirdIncrement.php
+### WeirdIncrement
 
 ```php
 <?php
@@ -139,7 +155,7 @@ Les tableaux, objets, booléen et ressources ne sont pas affectés.
 La décrémentation des valeurs NULL n'a également aucun effet, mais leur incrémentation donnera comme résultat 1. 
 ```
 
-### WeirdComparator.php
+### WeirdComparator
 
 ```php
 <?php     
@@ -166,7 +182,7 @@ null < -1 ==> false < true ==> true et int(true) ==> 1
 null == 0 ==> false == false ==> true et int(true) ==> 1
 ```
 
-### GreatCompare.php
+### GreatCompare
 
 ```php
 <?php
@@ -191,7 +207,7 @@ Toute chaîne de caractère non vide est considéré comme un booléen lors d'un
 Documentation: http://docs.php.net/manual/fr/language.operators.comparison.php
 https://www.php.net/manual/fr/language.types.boolean.php
 
-### WeirdLogic.php
+### WeirdLogic
 
 ```php
 <?php
@@ -222,7 +238,7 @@ En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de 
 
 ## Python
 
-### indent.py
+### indent
 
 ```python
 if True: 
@@ -234,7 +250,7 @@ if True:
 Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimitant des blocs de codes comme les accolades par exemple.
 De fait python demande une extrème attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
 
-### whatIsMyVariableValue.py
+### whatIsMyVariableValue
 
 ```python
 a= True; b=1;
@@ -251,7 +267,7 @@ False
 ```
 En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on consière true comme égal à 1. De fait les 2 premières instructions sont équivalentes à ```1==1 ==> true``` et ```1+1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
 
-### defaultVariable.py
+### defaultVariable
 
 ```python
 def append_ni(l=[]):
@@ -265,7 +281,7 @@ print(append_ni())
 
 Ici le résultat peut surprendre étant donné que dans beaucoup de langages l'initialisation par défaut d'un argument de méthode existe. De fait on pense que lorsque la méthode est appelée sans paramètre, un paramètre est créé à la volée et initialisé avec un tableau vide. Cependant le paramètre est ici initialisé lors de la définition de la méthode. Du coup le paramètre n'est initialisé qu'une fois et chaque appel de la méthode sans paramètre modifiera le paramètre par défaut.
 
-### weirdArray.py
+### weirdArray
 
 ```python
 myArray = ['ni'] * 16
@@ -284,7 +300,7 @@ print myArray
 En python il est tout à fait possible de créer un tableau à n dimensions grâce à l'opérateur de multiplication. Cependant le résultat du code précédent peut surprendre un peu mais est logique puisqu'avec l'utilisation de cet opérateur on ne créé pas trois tableaux mais un seul tableau que l'on référence trois fois.
 De fait la modification d'une valeur du tableau entrainera la modification pour les 3 tableaux.
 
-### compare.py
+### compare
 
 ```python
 print "" is ""
@@ -325,7 +341,7 @@ En fait quand la déclaration se fait sur la même ligne alors les variables ré
 
 ## Ruby Ruby on Rails
 
-### variables.rb
+### variables
 
 ```ruby
 a
@@ -348,7 +364,7 @@ De fait dans ```a = b``` a est égal à nil mais b n'a pas de valeur. Donc on in
 Dans l'instruction ```a=a ==> nil```, on retrouve la même chose, l'intepréteur initialise a avec nil avant de faire l'assignation ```a=a``` ce qui pourrait se traduire par ```a=nil``` ce qui donne ```nil```
 
 
-### dates.rb
+### dates
 
 Attention le code suivant n'est utilisable qu'avec Rails car il utilise des helpers de Rails.
 
@@ -366,7 +382,7 @@ Toutefois le fait que ce soit le dimanche précédent et non pas le dimanche sui
 
 ## Csharp
 
-### CircleSquare.cs
+### CircleSquare
 
 ```csharp
 static void Main(string[] args)
@@ -418,7 +434,7 @@ En C# les structs sont des versions allégés des classes. Le struct est un type
 
 https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/classes-and-structs/
 
-### Comparison.cs
+### Comparison
 
 ```csharp
 static void Main(string[] args)
@@ -431,7 +447,7 @@ static void Main(string[] args)
 
 Ici on pourrait croire que l'on créé deux objets strings. Il s'agit cependant de deux variables créées à la compilation. De fait étant donné qu'elles ont la même valeur, les deux variables référencent le même objet et ont donc une référence égale.
 
-### Inheritance.cs
+### Inheritance
 
 ```csharp
 public class Base
@@ -452,7 +468,7 @@ Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrer
 
 ## JavaScript
 
-### addition.js
+### addition
 
 Lors d'une addition les deux opérandes sont converties en primitives avant de réaliser l'opération.
 Convertir un objet en primitives retourne la valeur par défaut (pour un objet il s'agit de la méthode ```toString()``` qui est appelée).
@@ -510,7 +526,7 @@ true + true
 
 En javascript ```true``` est égale à ```1``` et ```false``` à ```0``` de fait il est tout à fait possible de faire des opérations arithmétiques avec des booléens.
 
-### array.js
+### array
 
 ```javascript
 Array(25)
@@ -527,7 +543,7 @@ Array(25).join("nya" - 1)
 
 Cependant lorsque l'on utilise l'opérateur -, on essaye de réaliser une opération arithmétique, donc on esaye de transformer la chaîne de caractère en entier dans un premier temps ce qui nous donne NaN. 
 
-### number.js
+### number
 
 ```javascript
 Math.max() < Math.min() 
