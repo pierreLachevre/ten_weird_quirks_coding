@@ -5,6 +5,18 @@ Ce repository a éé créé afin de répertorier toutes les bizarreries pouvant 
 
 Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explication de chacune d'entre elles ainsi qu'une référence sur le fichier de code correspondant.
 
+
+## Documentation
+
+* [Java](#java)
+* [PHP](#php)
+* [Python](#python)
+* [Ruby/Ruby on Rails](#ruby-ruby-on-rails)
+* [C#](#csharp)
+* [Javascript](#javascript)
+* [Liens utiles](#liens-utiles)
+
+
 ## Java
 ### BigCharacters.java
 ```Java
@@ -306,7 +318,7 @@ print a is b
 
 En fait quand la déclaration se fait sur la même ligne alors les variables référencent la même valeur.
 
-## Ruby/ Ruby on Rails
+## Ruby Ruby on Rails
 
 ### variables.rb
 
@@ -347,7 +359,7 @@ Dans le code précédent on a l'impression que lorsque l'on indique que l'on sou
 
 Toutefois le fait que ce soit le dimanche précédent et non pas le dimanche suivant peut surprendre. En réalité si on considère la semaine comme un tableau, le premier indice de la semaine (indice 0) correspond à Dimanche, ce qui explique ce résultat (et pourquoi pour tous les autres jours de la semaine on indique bien le jour de la semaine courante).
 
-## C#
+## Csharp
 
 ### CircleSquare.cs
 
@@ -541,3 +553,11 @@ NaN === NaN;
 Le résultat ici est false tout simplement comme définit dans la spécification. Dans une comparaison === entre deux valeurs (exemple x === y), on commence par comparer leur type. Si les types sont équivalents et que x est un nombre alors si x ou y est NaN alors le résultat sera false.
 
 https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison
+
+## Liens utiles
+
+https://github.com/denysdovhan/wtfjs#-is-equal-
+
+https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/
+
+https://www.destroyallsoftware.com/talks/wat
