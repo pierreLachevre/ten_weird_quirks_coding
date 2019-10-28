@@ -333,7 +333,19 @@ Dans l'instruction ```a=a ==> nil```, on retrouve la même chose, l'intepréteur
 
 ### dates.rb
 
-Attention ce code ci n'est utilisable qu'avec Rails car il utilise des helpers de Rails.
+Attention le code suivant n'est utilisable qu'avec Rails car il utilise des helpers de Rails.
+
+```ruby
+Date.today
+
+"previous sunday".to_date
+
+"next sunday".to_date
+```
+
+Dans le code précédent on a l'impression que lorsque l'on indique que l'on souhaite le ```previous sunday``` rails va automatiquement aller chercher le dimanche précédent. Il s'agit cependant d'une syntaxe trompeuse car il aurait été tout aussi possible d'écrire ```toto sunday``` ou ```est-ce que ça s'écrit sundae ou sunday ?``` au lieu de ```previous sunday```. En fait ruby et rails n'interprète que ce qu'ils peuvent comprendre et utiliser avec la méthode to_date.
+
+Toutefois le fait que ce soit le dimanche précédent et non pas le dimanche suivant peut surprendre. En réalité si on considère la semaine comme un tableau, le premier indice de la semaine (indice 0) correspond à Dimanche, ce qui explique ce résultat (et pourquoi pour tous les autres jours de la semaine on indique bien le jour de la semaine courante).
 
 ## C#
 
