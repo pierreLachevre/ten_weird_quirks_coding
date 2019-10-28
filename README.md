@@ -9,6 +9,11 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 ## Documentation
 
 * [Java](#java)
+	- [Slang](#slang)
+	- [Comment](#comment)
+	- [WeirdVariables](#weirdvariables)
+	- [IntegerEquality](#integerequality)
+	- [Arithmetic](#arithmetic)
 * [PHP](#php)
 * [Python](#python)
 * [Ruby/Ruby on Rails](#ruby-ruby-on-rails)
@@ -18,7 +23,7 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 
 
 ## Java
-### BigCharacters.java
+### Slang
 ```Java
 private static void dohteMthgir(){
         for (char c‮ = 1; c‮ > 0; c‮++) {
@@ -32,7 +37,7 @@ Ici on pourrait croire que certains caractères sont mal positionnés. Ce n'est 
 
 Pour bien comprendre le fonctionnement il vous suffit de placer votre curseur en début de ligne sur la boucle ```for``` et de naviguer sur la droite.
 
-### Comment.java
+### Comment
 ```Java
 public static void main(String[]args) {
          http://www.perdu.com
@@ -54,7 +59,7 @@ while (Some condition)
 }
 ```
 
-### WeirdVariables.java
+### WeirdVariables
 ```Java
 public static void main(String[] args) {
         String _‎ = "Hello ";
@@ -75,7 +80,7 @@ public static void main(String[] args) {
 }
 ```
 
-### IntegerEquality.java
+### IntegerEquality
 
 ```Java
     public static void main(String[] args) {
@@ -99,7 +104,7 @@ Ici le résultat visualisabe est ```true``` puis ```false```. Pourquoi donc? Log
 
 Cependant un cache est géré sur les objets ayant des valeurs entre -128 et 127 en Java. De fait quand une nouvelle variable est déclarée sur cette tranche de valeur alors elle partage la même référence que les autres sur cette même tranche.
 
-### Arithmetic.java
+### Arithmetic
 
 ```Java
 public static void main(String[] args) {
