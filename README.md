@@ -164,7 +164,7 @@ La décrémentation des valeurs NULL n'a également aucun effet, mais leur incr�
     echo (int)(null == 0), "\n";
 ?>
 ```
-Ici la logique est un peu complexe à comprendre mais peu être retrouvée dans la documentation avec un peu de recherche. Tout d'abord il faut comprendre la façon dont PHP interprète ```null``` lors d'une comparaison. D'après la documentation PHP considère que si la première opérande d'une opération est null et que la seconde est une valeur quelconque (peu importe le type sauf string) alors on considérera la comparaison comme une comparaison entre 2 booléens : http://docs.php.net/manual/fr/language.operators.comparison.php
+Ici la logique est un peu complexe à comprendre mais peut être retrouvée dans la documentation avec un peu de recherche. Tout d'abord il faut comprendre la façon dont PHP interprète ```null``` lors d'une comparaison. D'après la documentation PHP considère que si la première opérande d'une opération est null et que la seconde est une valeur quelconque (peu importe le type sauf string) alors on considérera la comparaison comme une comparaison entre 2 booléens : http://docs.php.net/manual/fr/language.operators.comparison.php
 
 Ensuite il faut comprendre comment sont interprétés ```null```, ```-1```, ```0``` et ```1``` dans ces cas. D'après la documentation ```null``` et ```0``` sont considérés comme égaux à ```false``` et ```1``` et ```-1``` sont considérés comme égaux à ```true```.
 
@@ -222,10 +222,10 @@ echo "\n";
 ?>
 ```
 
-Ici on se retrouve avec un cas qui diffère de beaucoup de langages de programmation. En effet dans de nombreux langages le résultat serait "Rock The Goat" face à cette série d'opérateur ternaire.
+Ici on se retrouve avec un cas qui diffère de beaucoup de langages de programmation. En effet dans de nombreux langages le résultat serait "Rock The Goat" face à cette série d'opérateurs ternaires.
 En PHP toutefois le résultat est "Kao". Encore une fois la raison est expliquée dans la documentation: https://www.php.net/manual/fr/language.operators.comparison.php
 
-On peut toutefois résumé la raison de la façon suivante:
+On peut toutefois résumer la raison de la façon suivante:
 
 ```php
 ($initial == 'D') ? 'Dalc' ==> false
@@ -234,7 +234,7 @@ On peut toutefois résumé la raison de la façon suivante:
 ==> 'Soplador' ? 'Kao' ==> true
 ==> 'Kao' 
 ```
-En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de gauche à droite.
+En effet en PHP les opérateurs ternaires en cascades sont évalués toujours de gauche à droite.
 
 ## Python
 
@@ -247,8 +247,8 @@ print("without indent")
 if True:
     print("with Indent")
 ```
-Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimitant des blocs de codes comme les accolades par exemple.
-De fait python demande une extrème attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
+Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimiter des blocs de codes comme les accolades par exemple.
+De fait python demande une extrême attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
 
 ### whatIsMyVariableValue
 
@@ -265,7 +265,7 @@ True
 2
 False
 ```
-En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on consière ```true``` comme égal à ```1```. De fait les 2 premières instructions sont équivalentes à ```1 == 1 ==> true``` et ```1 + 1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
+En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on considère ```true``` comme égal à ```1```. De fait les 2 premières instructions sont équivalentes à ```1 == 1 ==> true``` et ```1 + 1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
 
 ### defaultVariable
 
@@ -495,7 +495,7 @@ Ici la première opérande ```{}``` est considérée comme un bloc vide. La vale
 {} + {}
 ```
 
-On reprend ici le même raisonnement que précemment, sauf que dans ce cas on se retrouve avec ```+{}``` qui équivaut à ```ToNumber(ToPrimitive({}))```. La primitive d'un objet correspond à ```[object Object]``` ce qui équivaut à faire ```ToNumber([object Object])``` ce qui retourne ```NaN```.
+On reprend ici le même raisonnement que précédemment, sauf que dans ce cas on se retrouve avec ```+{}``` qui équivaut à ```ToNumber(ToPrimitive({}))```. La primitive d'un objet correspond à ```[object Object]``` ce qui équivaut à faire ```ToNumber([object Object])``` ce qui retourne ```NaN```.
 
 ```javascript
 [1, 2, 3] + [4, 5, 6];
