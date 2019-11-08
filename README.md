@@ -1,7 +1,7 @@
 # ten_weird_quirks_coding
 V 1.0.0
 
-Ce repository a éé créé afin de répertorier toutes les bizarreries pouvant être trouvées dans les langages de programmation.
+Ce repository a été créé afin de répertorier toutes les bizarreries pouvant être trouvées dans les langages de programmation.
 
 Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explication de chacune d'entre elles ainsi qu'une référence sur le fichier de code correspondant.
 
@@ -9,37 +9,37 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 ## Documentation
 
 * [Java](#java)
-	- [Slang](#slang)
-	- [Comment](#comment)
-	- [WeirdVariables](#weirdvariables)
-	- [IntegerEquality](#integerequality)
-	- [Arithmetic](#arithmetic)
+	- [Slang.java](#slangjava)
+	- [Comment.java](#commentjava)
+	- [WeirdVariables.java](#weirdvariablesjava)
+	- [IntegerEquality.java](#integerequalityjava)
+	- [Arithmetic.java](#arithmeticjava)
 * [PHP](#php)
-	- [WeirdIncrement](#weirdincrement)
-	- [WeirdComparator](#weirdcomparator)
-	- [GreatCompare](#greatcompare)
-	- [WeirdLogic](#weirdlogic)
+	- [WeirdIncrement.php](#weirdincrementphp)
+	- [WeirdComparator.php](#weirdcomparatorphp)
+	- [GreatCompare.php](#greatcomparephp)
+	- [WeirdLogic.php](#weirdlogicphp)
 * [Python](#python)
-	- [indent](#indent)
-	- [whatIsMyVariableValue](#whatismyvariablevalue)
-	- [weirdArray](#weirdarray)
-	- [compare](#compare)
+	- [indent.py](#indentpy)
+	- [whatIsMyVariableValue.py](#whatismyvariablevaluepy)
+	- [weirdArray.py](#weirdarraypy)
+	- [compare.py](#comparepy)
 * [Ruby/Ruby on Rails](#ruby-ruby-on-rails)
-	- [variables](#variables)
-	- [dates](#dates)
+	- [variables.rb](#variablesrb)
+	- [dates.rb](#datesrb)
 * [C#](#csharp)
-	- [CircleSquare](#circlesquare)
-	- [Comparison](#comparison)
-	- [Inheritance](#inheritance)
+	- [CircleSquare.cs](#circlesquarecs)
+	- [Comparison.cs](#comparisoncs)
+	- [Inheritance.cs](#inheritancecs)
 * [Javascript](#javascript)
-	- [addition](#addition)
-	- [array](#array)
-	- [number](#number)
+	- [addition.js](#additionjs)
+	- [array.js](#arrayjs)
+	- [number.js](#numberjs)
 * [Liens utiles](#liens-utiles)
 
 
 ## Java
-### Slang
+### Slang.java
 ```Java
 private static void dohteMthgir(){
         for (char c‮ = 1; c‮ > 0; c‮++) {
@@ -53,14 +53,14 @@ Ici on pourrait croire que certains caractères sont mal positionnés. Ce n'est 
 
 Pour bien comprendre le fonctionnement il vous suffit de placer votre curseur en début de ligne sur la boucle ```for``` et de naviguer sur la droite.
 
-### Comment
+### Comment.java
 ```Java
 public static void main(String[]args) {
          http://www.perdu.com
         System.out.println("Is this working?");
 }
 ```
-On peut constater une autre bizarrerie de Java. Toute chaîne de caractère déclaré hors d'une variable produit systématiquement une erreur de compilation. SAUF s'il s'agit d'une chaîne avec ```:```. Pourquoi? Et bien tout simplement que toute chaîne de caractère suivi d'un ```:``` est un label en Java. Un label est juste un moyen d'identifier un bloc en Java et permettent notamment de remplacer la méthode "goto" qui n'existe pas en Java. Ils sont de moins en moins utilisés cependant ils existent toujours. Exemple d'utilisation:
+On peut constater une autre bizarrerie de Java. Toute chaîne de caractère déclaré hors d'une variable produit systématiquement une erreur de compilation. SAUF s'il s'agit d'une chaîne avec ```:```. Pourquoi? Et bien tout simplement que toute chaîne de caractère suivie d'un ```:``` est un label en Java. Un label est juste un moyen d'identifier un bloc en Java et permettent notamment de remplacer la méthode "goto" qui n'existe pas en Java. Ils sont de moins en moins utilisés cependant ils existent toujours. Exemple d'utilisation:
 
 ```Java
 greatExample:
@@ -75,7 +75,7 @@ while (Some condition)
 }
 ```
 
-### WeirdVariables
+### WeirdVariables.java
 ```Java
 public static void main(String[] args) {
         String _‎ = "Hello ";
@@ -96,7 +96,7 @@ public static void main(String[] args) {
 }
 ```
 
-### IntegerEquality
+### IntegerEquality.java
 
 ```Java
     public static void main(String[] args) {
@@ -120,7 +120,7 @@ Ici le résultat visualisabe est ```true``` puis ```false```. Pourquoi donc? Log
 
 Cependant un cache est géré sur les objets ayant des valeurs entre -128 et 127 en Java. De fait quand une nouvelle variable est déclarée sur cette tranche de valeur alors elle partage la même référence que les autres sur cette même tranche.
 
-### Arithmetic
+### Arithmetic.java
 
 ```Java
 public static void main(String[] args) {
@@ -134,7 +134,7 @@ Le résultat peut aussi étonner ici mais est tout à fait logique. Le code ASCI
 
 ## PHP
 
-### WeirdIncrement
+### WeirdIncrement.php
 
 ```php
 <?php
@@ -155,7 +155,7 @@ Les tableaux, objets, booléen et ressources ne sont pas affectés.
 La décrémentation des valeurs NULL n'a également aucun effet, mais leur incrémentation donnera comme résultat 1. 
 ```
 
-### WeirdComparator
+### WeirdComparator.php
 
 ```php
 <?php     
@@ -164,9 +164,9 @@ La décrémentation des valeurs NULL n'a également aucun effet, mais leur incr�
     echo (int)(null == 0), "\n";
 ?>
 ```
-Ici la logique est un peu complexe à comprendre mais peu être retrouvée dans la documentation avec un peu de recherche. Tout d'abord il faut comprendre la façon dont PHP interprète null lors d'une comparaison. D'après la documentation PHP consièdre que si la première opérande d'une opération est null et que la seconde est une valeur quelconque (peu importe le type sauf string) alors on considerera la comparation comme une comparaison entre 2 booléens : http://docs.php.net/manual/fr/language.operators.comparison.php
+Ici la logique est un peu complexe à comprendre mais peut être retrouvée dans la documentation avec un peu de recherche. Tout d'abord il faut comprendre la façon dont PHP interprète ```null``` lors d'une comparaison. D'après la documentation PHP considère que si la première opérande d'une opération est null et que la seconde est une valeur quelconque (peu importe le type sauf string) alors on considérera la comparaison comme une comparaison entre 2 booléens : http://docs.php.net/manual/fr/language.operators.comparison.php
 
-Ensuite il faut comprendre comment sont interprétés null, -1, 0 et 1 dans ces cas. D'après la documentation null et 0 sont considérés comme égaux à false et 1 et -1 sont considérés comme égaux à true.
+Ensuite il faut comprendre comment sont interprétés ```null```, ```-1```, ```0``` et ```1``` dans ces cas. D'après la documentation ```null``` et ```0``` sont considérés comme égaux à ```false``` et ```1``` et ```-1``` sont considérés comme égaux à ```true```.
 
 De fait:
 
@@ -182,7 +182,7 @@ null < -1 ==> false < true ==> true et int(true) ==> 1
 null == 0 ==> false == false ==> true et int(true) ==> 1
 ```
 
-### GreatCompare
+### GreatCompare.php
 
 ```php
 <?php
@@ -196,7 +196,7 @@ echo "\n";
 ```
 
 De la même façon que le cas précédent en lisant la documentation on comprend le résultat.
-Toute chaîne de caractère non vide est considéré comme un booléen lors d'une comparaison avec un booléen et comme un entier lors d'une comparaison avec un entier (si la chaîne ne peut être converti elle est alors égale à 0). De fait :
+Toute chaîne de caractères non vide est considéré comme un booléen lors d'une comparaison avec un booléen et comme un entier lors d'une comparaison avec un entier (si la chaîne ne peut être converti elle est alors égale à ```0```). De fait :
 
 ```echo "Rock the Goat" == true; ==> true donc 1```
 
@@ -207,7 +207,7 @@ Toute chaîne de caractère non vide est considéré comme un booléen lors d'un
 Documentation: http://docs.php.net/manual/fr/language.operators.comparison.php
 https://www.php.net/manual/fr/language.types.boolean.php
 
-### WeirdLogic
+### WeirdLogic.php
 
 ```php
 <?php
@@ -222,10 +222,10 @@ echo "\n";
 ?>
 ```
 
-Ici on se retrouve avec un cas qui diffère de beaucoup de langages de programmation. En effet dans de nombreux langages le résultat serait "Rock The Goat" face à cette série d'opérateur ternaire.
+Ici on se retrouve avec un cas qui diffère de beaucoup de langages de programmation. En effet dans de nombreux langages le résultat serait "Rock The Goat" face à cette série d'opérateurs ternaires.
 En PHP toutefois le résultat est "Kao". Encore une fois la raison est expliquée dans la documentation: https://www.php.net/manual/fr/language.operators.comparison.php
 
-On peut toutefois résumé la raison de la façon suivante:
+On peut toutefois résumer la raison de la façon suivante:
 
 ```php
 ($initial == 'D') ? 'Dalc' ==> false
@@ -234,11 +234,11 @@ On peut toutefois résumé la raison de la façon suivante:
 ==> 'Soplador' ? 'Kao' ==> true
 ==> 'Kao' 
 ```
-En effet en PHP les opérateurs ternaires en cascade sont évalués toujours de gauche à droite.
+En effet en PHP les opérateurs ternaires en cascades sont évalués toujours de gauche à droite.
 
 ## Python
 
-### indent
+### indent.py
 
 ```python
 if True: 
@@ -247,15 +247,15 @@ print("without indent")
 if True:
     print("with Indent")
 ```
-Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimitant des blocs de codes comme les accolades par exemple.
-De fait python demande une extrème attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
+Ici il ne s'agit pas vraiment d'une bizarrerie mais plus d'un point d'attention qui a pu poser des problèmes à de nombreux développeurs. En effet python ne possède pas de caractères permettant de délimiter des blocs de codes comme les accolades par exemple.
+De fait python demande une extrême attention au niveau de l'indentation puisque l'oubli d'une indentation provoque une erreur.
 
-### whatIsMyVariableValue
+### whatIsMyVariableValue.py
 
 ```python
 a= True; b=1;
 print a == b
-print a+b
+print a + b
 print str(a) == str(b)
 ```
 Les résultats successifs de cet appel sont :
@@ -265,9 +265,9 @@ True
 2
 False
 ```
-En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on consière true comme égal à 1. De fait les 2 premières instructions sont équivalentes à ```1==1 ==> true``` et ```1+1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
+En fait le comportement des booléens est le même que pour Javascript, du coup le résultat est le plus logique car on considère ```true``` comme égal à ```1```. De fait les 2 premières instructions sont équivalentes à ```1 == 1 ==> true``` et ```1 + 1 ==> 2``` (ce qui est logique vu qu'en python bool est une sous classe de int).
 
-### defaultVariable
+### defaultVariable.py
 
 ```python
 def append_ni(l=[]):
@@ -281,7 +281,7 @@ print(append_ni())
 
 Ici le résultat peut surprendre étant donné que dans beaucoup de langages l'initialisation par défaut d'un argument de méthode existe. De fait on pense que lorsque la méthode est appelée sans paramètre, un paramètre est créé à la volée et initialisé avec un tableau vide. Cependant le paramètre est ici initialisé lors de la définition de la méthode. Du coup le paramètre n'est initialisé qu'une fois et chaque appel de la méthode sans paramètre modifiera le paramètre par défaut.
 
-### weirdArray
+### weirdArray.py
 
 ```python
 myArray = ['ni'] * 16
@@ -300,7 +300,7 @@ print myArray
 En python il est tout à fait possible de créer un tableau à n dimensions grâce à l'opérateur de multiplication. Cependant le résultat du code précédent peut surprendre un peu mais est logique puisqu'avec l'utilisation de cet opérateur on ne créé pas trois tableaux mais un seul tableau que l'on référence trois fois.
 De fait la modification d'une valeur du tableau entrainera la modification pour les 3 tableaux.
 
-### compare
+### compare.py
 
 ```python
 print "" is ""
@@ -341,7 +341,7 @@ En fait quand la déclaration se fait sur la même ligne alors les variables ré
 
 ## Ruby Ruby on Rails
 
-### variables
+### variables.rb
 
 ```ruby
 a
@@ -356,15 +356,15 @@ Ici le résultat des différentes opérations peut paraitre étrange mais est to
 undefined local variable or method 'a' for main Object
 ```
 
-De fait l'erreur présente sur a et b est normal. De même lorsque l'on fait ```a=b```, l'erreur est la même puisqu'on nous indique de b n'est pas définit. Toutefois pourquoi ne nous indique t-il pas que a n'est pas définit?
+De fait l'erreur présente sur ```a``` et ```b``` est normale. De même lorsque l'on fait ```a = b```, l'erreur est la même puisqu'on nous indique de b n'est pas définie. Toutefois pourquoi ne nous indique t-il pas que a n'est pas définie?
 
-En fait l'explication se trouve dans l'interpréteur ruby. Celui-ci initialise toute les variables local avec nil quand il voit que l'on essaye de les assigner.
-De fait dans ```a = b``` a est égal à nil mais b n'a pas de valeur. Donc on indique une erreur sur b. 
+En fait l'explication se trouve dans l'interpréteur ruby. Celui-ci initialise toute les variables locales avec nil quand il voit que l'on essaye de les assigner.
+De fait dans ```a = b``` ```a``` est égale à ```nil``` mais ```b``` n'a pas de valeur. Donc on indique une erreur sur ```b```. 
 
-Dans l'instruction ```a=a ==> nil```, on retrouve la même chose, l'intepréteur initialise a avec nil avant de faire l'assignation ```a=a``` ce qui pourrait se traduire par ```a=nil``` ce qui donne ```nil```
+Dans l'instruction ```a = a ==> nil```, on retrouve la même chose, l'intepréteur initialise ```a``` avec ```nil``` avant de faire l'assignation ```a = a``` ce qui pourrait se traduire par ```a = nil``` ce qui donne ```nil```
 
 
-### dates
+### dates.rb
 
 Attention le code suivant n'est utilisable qu'avec Rails car il utilise des helpers de Rails.
 
@@ -382,7 +382,7 @@ Toutefois le fait que ce soit le dimanche précédent et non pas le dimanche sui
 
 ## Csharp
 
-### CircleSquare
+### CircleSquare.cs
 
 ```csharp
 static void Main(string[] args)
@@ -405,7 +405,7 @@ static void Main(string[] args)
 }
 ```
 
-Ici le résultat peut surprendre car on pense travailler sur les mêmes objets dans les deux cas avec le système de référence. Or Square et Circle sont déclarés de la façon suivante:
+Ici le résultat peut surprendre car on pense travailler sur les mêmes objets dans les deux cas avec le système de référence. Or ```Square``` et ```Circle``` sont déclarés de la façon suivante:
 
 ```csharp
 public class Circle
@@ -434,7 +434,7 @@ En C# les structs sont des versions allégés des classes. Le struct est un type
 
 https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/classes-and-structs/
 
-### Comparison
+### Comparison.cs
 
 ```csharp
 static void Main(string[] args)
@@ -447,7 +447,7 @@ static void Main(string[] args)
 
 Ici on pourrait croire que l'on créé deux objets strings. Il s'agit cependant de deux variables créées à la compilation. De fait étant donné qu'elles ont la même valeur, les deux variables référencent le même objet et ont donc une référence égale.
 
-### Inheritance
+### Inheritance.cs
 
 ```csharp
 public class Base
@@ -464,11 +464,11 @@ public class Derived : Base, Base2
 }
 ```
 
-Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrerie, mais en C# l'héritage et l'implémentation utilise le même caractère ```:```. De fait il n'est pas possible de distinguer dans une classe les implémentations de l'héritage (au singulier car l'héritage multiple n'existe pas en C#), on peut seulement supposé que "peut-être" Base est une classe car l'héritage est forcément écrit avant toute implémentation.
+Il s'agit plus d'une petite remarque concernant la syntaxe qu'une vraie bizarrerie, mais en C# l'héritage et l'implémentation utilise le même caractère ```:```. De fait il n'est pas possible de distinguer dans une classe les implémentations de l'héritage (au singulier car l'héritage multiple n'existe pas en C#), on peut seulement supposé que "peut-être" ```Base``` est une classe car l'héritage est forcément écrit avant toute implémentation.
 
 ## JavaScript
 
-### addition
+### addition.js
 
 Lors d'une addition les deux opérandes sont converties en primitives avant de réaliser l'opération.
 Convertir un objet en primitives retourne la valeur par défaut (pour un objet il s'agit de la méthode ```toString()``` qui est appelée).
@@ -495,7 +495,7 @@ Ici la première opérande ```{}``` est considérée comme un bloc vide. La vale
 {} + {}
 ```
 
-On reprend ici le même raisonnement que précemment, sauf que dans ce cas on se retrouve avec ```+[]``` qui équivaut à ```ToNumber(ToPrimitive({}))```. La primitive d'un objet correspond à ```[object Object]``` ce qui équivaut à faire ```ToNumber([object Object])``` ce qui retourne ```NaN```.
+On reprend ici le même raisonnement que précédemment, sauf que dans ce cas on se retrouve avec ```+{}``` qui équivaut à ```ToNumber(ToPrimitive({}))```. La primitive d'un objet correspond à ```[object Object]``` ce qui équivaut à faire ```ToNumber([object Object])``` ce qui retourne ```NaN```.
 
 ```javascript
 [1, 2, 3] + [4, 5, 6];
@@ -524,9 +524,9 @@ true + true
 ((true+true+true)*(true+false+true))*(Math.pow(true+true,(true+true))*(true+true)-true)
 ```
 
-En javascript ```true``` est égale à ```1``` et ```false``` à ```0``` de fait il est tout à fait possible de faire des opérations arithmétiques avec des booléens.
+En Javascript ```true``` est égale à ```1``` et ```false``` à ```0``` de fait il est tout à fait possible de faire des opérations arithmétiques avec des booléens.
 
-### array
+### array.js
 
 ```javascript
 Array(25)
@@ -535,21 +535,21 @@ Array(25).join("nya")
 
 Array(25).join("nya" + 1)
 ```
-En Javascript lorsque l'on utilise l'opérateur + avec un chaîne et un entier on réalise un concaténation.
+En Javascript lorsque l'on utilise l'opérateur ```+``` avec un chaîne et un entier on réalise un concaténation.
 
 ```javascript
 Array(25).join("nya" - 1)
 ```
 
-Cependant lorsque l'on utilise l'opérateur -, on essaye de réaliser une opération arithmétique, donc on esaye de transformer la chaîne de caractère en entier dans un premier temps ce qui nous donne NaN. 
+Cependant lorsque l'on utilise l'opérateur ```-```, on essaye de réaliser une opération arithmétique, donc on esaye de transformer la chaîne de caractère en entier dans un premier temps ce qui nous donne ```NaN```. 
 
-### number
+### number.js
 
 ```javascript
 Math.max() < Math.min() 
 ```
 
-```Math.max``` renvoit le plus grand nombre comparé avec -Infini. Et ```Math.min``` renvoit le plus petit nombre comparé à +Infini.
+```Math.max``` renvoit le plus grand nombre comparé avec ```-Infini```. Et ```Math.min``` renvoit le plus petit nombre comparé à ```+Infini```.
 
 Ainsi lorsque l'on fait ```Math.max(5)``` équivaut à faire ```Math.max(5, -Infini) ==> 5```
 Et lorsque l'on fait ```Math.min(2)``` équivaut à faire ```Math.min(2, +Infini) ==> 2```
@@ -564,14 +564,14 @@ Le résultat peut encore une fois surprendre mais en fait l'opération précéde
 typeof NaN
 ```
 
-Il est important de préciser dans un premier temps que NaN n'est pas un mot clé comme true, false etc, il s'agit en fait d'une propriété de l'objet global. En fait lorsque l'on affiche NaN on référence ```Number.NaN```. 
-NaN est de type Number comme définit dans la spécification EcmaScript: http://www.ecma-international.org/ecma-262/5.1/#sec-8.5
+Il est important de préciser dans un premier temps que ```NaN``` n'est pas un mot clé comme ```true```, ```false``` etc, il s'agit en fait d'une propriété de l'objet global. En fait lorsque l'on affiche ```NaN``` on référence ```Number.NaN```. 
+```NaN``` est de type ```Number``` comme définit dans la spécification EcmaScript: http://www.ecma-international.org/ecma-262/5.1/#sec-8.5
 
 ```javascript
 NaN === NaN;
 ```
 
-Le résultat ici est false tout simplement comme définit dans la spécification. Dans une comparaison === entre deux valeurs (exemple x === y), on commence par comparer leur type. Si les types sont équivalents et que x est un nombre alors si x ou y est NaN alors le résultat sera false.
+Le résultat ici est false tout simplement comme définit dans la spécification. Dans une comparaison ```===``` entre deux valeurs (exemple ```x === y```), on commence par comparer leur type. Si les types sont équivalents et que ```x``` est un nombre alors si ```x``` ou ```y``` est ```NaN``` alors le résultat sera ```false```.
 
 https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison
 
@@ -582,3 +582,5 @@ https://github.com/denysdovhan/wtfjs#-is-equal-
 https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/
 
 https://www.destroyallsoftware.com/talks/wat
+
+https://wiki.theory.org/index.php/YourLanguageSucks
