@@ -1,23 +1,33 @@
 import static java.lang.Character.getNumericValue;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Slang {
     public static void main(String... a){
-        rightMethod()
+        //rightMethod();
         dohteMthgir();
     }
 
     private static void rightMethod(){
-        for(char c = 1; c > 0; c++){
-            if(getNumericValue(c) > 1000) {
-                System.out.println(c+ ": "+ getNumericValue(c));
+        List<Integer> myInts= IntStream.range(0, 10000).boxed()
+        .collect(Collectors.toList());
+
+        for(int i : myInts){
+            if (Math.sqrt(i) > 99.95){
+                System.out.println(i+":"+ Math.sqrt(i));
             }
         }
     }
 
     private static void dohteMthgir(){
-        for (char c‮ = 1; c‮ > 0; c‮++) {
-            if (getNumericValue(c‮) > 1000) {
-                System.out.println(c‮ + ": " + getNumericValue(c‮));
+        List<Integer> myInts‮=IntStream.range(0, 10000)
+        .boxed().collect(Collectors.toList());
+
+        for(int i‮ : myInts‮ ){
+            if (Math.sqrt(i‮) > 99.95 ){
+                System.out.println(i‮ + ": " + Math.sqrt(i‮));
             }
         }
     }

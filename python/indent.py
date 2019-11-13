@@ -1,4 +1,3 @@
-
 if True: 
 print("without indent")
 

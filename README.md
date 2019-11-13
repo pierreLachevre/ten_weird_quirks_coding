@@ -42,11 +42,14 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 ### Slang.java
 ```Java
 private static void dohteMthgir(){
-        for (char c‮ = 1; c‮ > 0; c‮++) {
-            if (getNumericValue(c‮) > 1000) {
-                System.out.println(c‮ + ": " + getNumericValue(c‮));
-            }
-        }
+	List<Integer> myInts‮=IntStream.range(0, 10000)
+	.boxed().collect(Collectors.toList());
+
+	for(int i‮ : myInts‮ ){
+	    if (Math.sqrt(i‮) > 99.95 ){
+		System.out.println(i‮ + ": " + Math.sqrt(i‮));
+	    }
+	}
 }
 ```
 Ici on pourrait croire que certains caractères sont mal positionnés. Ce n'est pas du tout le cas. En fait un caractère est inséré en milieu de ligne qui permet d'écrire de droite à gauche. De plus ce caractère ```\u202e``` a une taille de 0 mais est parfaitement compris par Java.
@@ -111,8 +114,8 @@ public static void main(String[] args) {
     }
     
     private static void secondEquality(){
-        Integer c = 666;
-        Integer d = 666;
+        Integer c = 404;
+        Integer d = 404;
         System.out.println(c == d);
     }
 ```
