@@ -42,9 +42,13 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 ### Slang.java
 ```Java
 private static void dohteMthgir(){
-        for (char c‮ = 1; c‮ > 0; c‮++) {
-            if (getNumericValue(c‮) > 1000) {
-                System.out.println(c‮ + ": " + getNumericValue(c‮));
+        List<Integer> myInts‮=IntStream.range(0, 10000)
+        .boxed().collect(Collectors.toList());
+
+        for(int i‮=0; i‮ < myInts‮.size(); i‮++) {
+            int myVar = myInts‮.get(i‮);
+            if (Math.sqrt‮(myVar) > 99.95) {
+                System.out.println(myVar + ":‮ " + Math.sqrt(myVar));
             }
         }
 }
@@ -111,8 +115,8 @@ public static void main(String[] args) {
     }
     
     private static void secondEquality(){
-        Integer c = 666;
-        Integer d = 666;
+        Integer c = 404;
+        Integer d = 404;
         System.out.println(c == d);
     }
 ```
@@ -571,7 +575,7 @@ Il est important de préciser dans un premier temps que ```NaN``` n'est pas un m
 NaN === NaN;
 ```
 
-Le résultat ici est false tout simplement comme définit dans la spécification. Dans une comparaison ```===``` entre deux valeurs (exemple ```x === y```), on commence par comparer leur type. Si les types sont équivalents et que ```x``` est un nombre alors si ```x``` ou ```y``` est ```NaN``` alors le résultat sera ```false```.
+Le résultat ici est ```false``` tout simplement comme définit dans la spécification. Dans une comparaison ```===``` entre deux valeurs (exemple ```x === y```), on commence par comparer leur type. Si les types sont équivalents et que ```x``` est un nombre alors si ```x``` ou ```y``` est ```NaN``` alors le résultat sera ```false```.
 
 https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison
 
