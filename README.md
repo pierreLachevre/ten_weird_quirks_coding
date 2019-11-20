@@ -42,14 +42,15 @@ Vous pouvez retrouver ici la liste de ces bizarreries par langage, une explicati
 ### Slang.java
 ```Java
 private static void dohteMthgir(){
-	List<Integer> myInts‮=IntStream.range(0, 10000)
-	.boxed().collect(Collectors.toList());
+        List<Integer> myInts‮=IntStream.range(0, 10000)
+        .boxed().collect(Collectors.toList());
 
-	for(int i‮ : myInts‮ ){
-	    if (Math.sqrt(i‮) > 99.95 ){
-		System.out.println(i‮ + ": " + Math.sqrt(i‮));
-	    }
-	}
+        for(int i‮=0; i‮ < myInts‮.size(); i‮++) {
+            int myVar = myInts‮.get(i‮);
+            if (Math.sqrt‮(myVar) > 99.95) {
+                System.out.println(myVar + ":‮ " + Math.sqrt(myVar));
+            }
+        }
 }
 ```
 Ici on pourrait croire que certains caractères sont mal positionnés. Ce n'est pas du tout le cas. En fait un caractère est inséré en milieu de ligne qui permet d'écrire de droite à gauche. De plus ce caractère ```\u202e``` a une taille de 0 mais est parfaitement compris par Java.
@@ -574,7 +575,7 @@ Il est important de préciser dans un premier temps que ```NaN``` n'est pas un m
 NaN === NaN;
 ```
 
-Le résultat ici est false tout simplement comme définit dans la spécification. Dans une comparaison ```===``` entre deux valeurs (exemple ```x === y```), on commence par comparer leur type. Si les types sont équivalents et que ```x``` est un nombre alors si ```x``` ou ```y``` est ```NaN``` alors le résultat sera ```false```.
+Le résultat ici est ```false``` tout simplement comme définit dans la spécification. Dans une comparaison ```===``` entre deux valeurs (exemple ```x === y```), on commence par comparer leur type. Si les types sont équivalents et que ```x``` est un nombre alors si ```x``` ou ```y``` est ```NaN``` alors le résultat sera ```false```.
 
 https://www.ecma-international.org/ecma-262/#sec-strict-equality-comparison
 
